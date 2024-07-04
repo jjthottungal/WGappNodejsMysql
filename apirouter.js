@@ -6,6 +6,7 @@ const { encryptData, decryptData } = require('./aes_encryption.js');
 const { access_token } = require('./config.js');
 const jwt = require('jsonwebtoken');
 
+
 //Authentication routine for JWT
 function authenticationToken(req, res, next) {
     const authHeader = req.headers['authorization'];

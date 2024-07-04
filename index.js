@@ -1,9 +1,5 @@
 require('dotenv').config();
 //----------------------------------------
-//const dboperations = require('./dboperations');
-//const { encryptData, decryptData } = require('./aes_encryption.js');
-//const { access_token } = require('./config.js');
-//const jwt = require('jsonwebtoken');
 const express = require('express');
 const app = express();
 
@@ -36,20 +32,6 @@ app.use((req, res, next) => {
     }
     next()
 })
-
-//Authentication routine for JWT
-function authenticationToken(req, res, next) {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
-    if (token == null) return res.sendStatus(401);
-
-    jwt.verify(token, access_token, (err, payload) => {
-        if (err) return res.sendStatus(403);
-        //req.payload = payload;
-        next();
-
-    })
-}
 
 //----Routers to call WebApi
 app.get('/', (req, res) => {
